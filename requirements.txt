@@ -1,16 +1,46 @@
-# Machine Learning Learning Path - All Packages
-#
-# For a minimal install (recommended for beginners):
-#   pip install -r requirements-core.txt
-#
-# For advanced features (deep learning, gradient boosting variants):
-#   pip install -r requirements-advanced.txt
-#
-# Or install everything at once:
-#   pip install -r requirements.txt
+# Machine Learning Learning Path - Consolidated Requirements
+# Python version: 3.11.9
+# Install with: pip install -r requirements.txt
 
-# Core packages (always needed)
--r requirements-core.txt
+# ============================================================================
+# CORE PACKAGES - Essential for Machine Learning
+# ============================================================================
 
-# Advanced packages (optional - for 04-advanced and experimentation)
--r requirements-advanced.txt
+# Essential numerical computing
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Core Machine Learning
+scikit-learn>=1.3.0
+
+# Jupyter for interactive learning
+jupyter>=1.0.0
+ipython>=8.0.0
+
+# Utilities
+tqdm>=4.65.0  # Progress bars
+joblib>=1.3.0  # Model persistence
+
+# ============================================================================
+# ADVANCED PACKAGES - For Deep Learning & Advanced Topics
+# ============================================================================
+
+# Deep Learning (for 04-advanced section)
+tensorflow>=2.13.0  # or tensorflow-macos for Mac M1/M2
+# Alternative: pytorch>=2.0.0
+
+# Gradient Boosting Variants
+xgboost>=2.0.0  # Optimized gradient boosting
+lightgbm>=4.0.0  # Fast gradient boosting
+catboost>=1.2.0  # Categorical boosting
+
+# Model Interpretation
+shap>=0.42.0  # Explain predictions
+
+# Data profiling (updated package name for Python 3.11+)
+ydata-profiling>=4.0.0  # Automated EDA (formerly pandas-profiling)
