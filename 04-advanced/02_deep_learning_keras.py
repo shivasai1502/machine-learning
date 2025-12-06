@@ -252,19 +252,23 @@ for i in range(6):
                 fontsize=9, fontweight='bold', color=color)
 
 plt.tight_layout()
-plt.savefig('/home/user/machine-learning/04-advanced/keras_results.png', dpi=150)
-print("\nVisualization saved to: 04-advanced/keras_results.png")
+output_path = Path(__file__).parent / 'keras_results.png'
+plt.savefig(output_path, dpi=150)
+print(f"
+Visualization saved to: {output_path}")
 
 # Save the model
-model.save('/home/user/machine-learning/04-advanced/digit_classifier.keras')
-print("\nModel saved to: 04-advanced/digit_classifier.keras")
+output_path = Path(__file__).parent / 'digit_classifier.keras'
+model.save(output_path)
+print(f"
+Model saved to: {output_path}")
 
 print("\n" + "=" * 60)
 print("LOADING AND USING SAVED MODEL")
 print("=" * 60)
 
 # Load the model
-loaded_model = keras.models.load_model('/home/user/machine-learning/04-advanced/digit_classifier.keras')
+loaded_model = keras.models.load_model(Path(__file__).parent / 'digit_classifier.keras')
 
 # Make predictions with loaded model
 sample_predictions = loaded_model.predict(X_test_scaled[:5], verbose=0)

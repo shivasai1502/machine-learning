@@ -9,6 +9,7 @@ Start here before diving into CNNs, RNNs, or Transformers!
 
 import numpy as np
 import matplotlib.pyplot as plt
+from pathlib import Path
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -66,8 +67,9 @@ plt.axhline(y=0, color='k', linestyle='-', linewidth=0.5)
 plt.axvline(x=0, color='k', linestyle='-', linewidth=0.5)
 
 plt.tight_layout()
-plt.savefig('/home/user/machine-learning/04-advanced/activation_functions.png', dpi=150)
-print("\nActivation functions visualization saved!")
+output_path = Path(__file__).parent / 'activation_functions.png'
+plt.savefig(output_path, dpi=150)
+print(f"\nActivation functions visualization saved to: {output_path}")
 
 print("\n" + "=" * 60)
 print("PART 2: SIMPLE NEURAL NETWORK (2 LAYERS)")
@@ -77,7 +79,7 @@ print("=" * 60)
 X, y = make_moons(n_samples=500, noise=0.2, random_state=42)
 
 print(f"Dataset: {len(X)} samples")
-print(f"Classes: 2 (non-linearly separable)")
+print("Classes: 2 (non-linearly separable)")
 
 # Split and scale data
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -102,9 +104,12 @@ print("\nNetwork architecture:")
 print("  Input layer: 2 neurons (2 features)")
 print("  Hidden layer: 5 neurons (ReLU activation)")
 print("  Output layer: 1 neuron (sigmoid)")
-print(f"  Total parameters: {sum(p.size for p in nn_simple.coefs_) + sum(p.size for p in nn_simple.intercepts_)}")
 
 nn_simple.fit(X_train_scaled, y_train)
+
+# Calculate parameters after fitting
+n_params = sum(p.size for p in nn_simple.coefs_) + sum(p.size for p in nn_simple.intercepts_)
+print(f"  Total parameters: {n_params}")
 
 y_pred = nn_simple.predict(X_test_scaled)
 accuracy = accuracy_score(y_test, y_pred)
@@ -217,6 +222,9 @@ circles_acc = accuracy_score(y_test_c, nn_deep.predict(X_test_c_scaled))
 
 print(f"Deep NN on circles: {circles_acc:.2%}")
 
+# Helper function to avoid repeated code
+h_step = 0.02
+
 # Visualizations
 fig = plt.figure(figsize=(16, 12))
 
@@ -262,7 +270,7 @@ datasets = [
 ]
 
 plot_idx = 4
-for dataset_idx, (X_tr, y_tr, X_te, y_te, title) in enumerate(datasets):
+for X_tr, y_tr, X_te, y_te, title in datasets:
     # Scale data
     scaler_temp = StandardScaler()
     X_tr_scaled = scaler_temp.fit_transform(X_tr)
@@ -279,11 +287,10 @@ for dataset_idx, (X_tr, y_tr, X_te, y_te, title) in enumerate(datasets):
         nn_temp.fit(X_tr_scaled, y_tr)
 
         # Create decision boundary
-        h = 0.02
         x_min, x_max = X_tr[:, 0].min() - 0.5, X_tr[:, 0].max() + 0.5
         y_min, y_max = X_tr[:, 1].min() - 0.5, X_tr[:, 1].max() + 0.5
-        xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
-                             np.arange(y_min, y_max, h))
+        xx, yy = np.meshgrid(np.arange(x_min, x_max, h_step),
+                             np.arange(y_min, y_max, h_step))
 
         Z = nn_temp.predict(scaler_temp.transform(np.c_[xx.ravel(), yy.ravel()]))
         Z = Z.reshape(xx.shape)
@@ -301,8 +308,9 @@ for dataset_idx, (X_tr, y_tr, X_te, y_te, title) in enumerate(datasets):
         plot_idx += 1
 
 plt.tight_layout()
-plt.savefig('/home/user/machine-learning/04-advanced/neural_networks_results.png', dpi=150)
-print("\nVisualization saved to: 04-advanced/neural_networks_results.png")
+output_path = Path(__file__).parent / 'neural_networks_results.png'
+plt.savefig(output_path, dpi=150)
+print(f"\nVisualization saved to: {output_path}")
 
 print("\n" + "=" * 60)
 print("KEY CONCEPTS")

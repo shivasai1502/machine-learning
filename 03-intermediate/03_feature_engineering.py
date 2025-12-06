@@ -17,6 +17,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.feature_selection import SelectKBest, f_classif, RFE
+from pathlib import Path
 
 print("=" * 60)
 print("FEATURE ENGINEERING - COMPLETE GUIDE")
@@ -259,10 +260,24 @@ for name, features in experiments.items():
 # Visualizations
 fig = plt.figure(figsize=(16, 10))
 
-# Plot 1: Numerical distributions
+# Plot 1: Numerical distributions - create a dedicated figure for histograms
+fig_hist = plt.figure(figsize=(12, 8))
+data[numerical_features].hist(bins=30, alpha=0.7, edgecolor='black', figsize=(12, 8))
+plt.suptitle('Original Feature Distributions', fontweight='bold')
+plt.tight_layout()
+output_path_hist = Path(__file__).parent / 'feature_distributions.png'
+plt.savefig(output_path_hist, dpi=150)
+plt.close(fig_hist)
+
+# Continue with main visualization figure
+fig = plt.figure(figsize=(16, 10))
 ax1 = plt.subplot(2, 3, 1)
-data[numerical_features].hist(bins=30, ax=ax1, alpha=0.7, edgecolor='black')
-plt.suptitle('Original Feature Distributions', y=1.02, fontweight='bold')
+# Plot a single representative distribution instead
+ax1.hist(data['income'], bins=30, alpha=0.7, edgecolor='black', color='skyblue')
+ax1.set_xlabel('Income', fontsize=11)
+ax1.set_ylabel('Frequency', fontsize=11)
+ax1.set_title('Income Distribution (Example)', fontweight='bold')
+ax1.grid(True, alpha=0.3)
 
 # Plot 2: Feature correlation
 ax2 = plt.subplot(2, 3, 2)
@@ -319,8 +334,10 @@ ax6.set_title('Age Group Distribution (Binning)', fontweight='bold')
 ax6.grid(True, alpha=0.3, axis='y')
 
 plt.tight_layout()
-plt.savefig('/home/user/machine-learning/03-intermediate/feature_engineering_results.png', dpi=150)
-print("\nVisualization saved to: 03-intermediate/feature_engineering_results.png")
+output_path = Path(__file__).parent / 'feature_engineering_results.png'
+plt.savefig(output_path, dpi=150)
+print(f"
+Visualization saved to: {output_path}")
 
 print("\n" + "=" * 60)
 print("FEATURE ENGINEERING CHEAT SHEET")

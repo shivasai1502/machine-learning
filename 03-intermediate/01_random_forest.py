@@ -15,6 +15,7 @@ from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.datasets import make_classification
 import seaborn as sns
+from pathlib import Path
 
 print("=" * 60)
 print("RANDOM FOREST - CREDIT RISK CLASSIFICATION")
@@ -212,8 +213,10 @@ ax6.legend()
 ax6.grid(True, alpha=0.3, axis='y')
 
 plt.tight_layout()
-plt.savefig('/home/user/machine-learning/03-intermediate/random_forest_results.png', dpi=150)
-print("\nVisualization saved to: 03-intermediate/random_forest_results.png")
+output_path = Path(__file__).parent / 'random_forest_results.png'
+plt.savefig(output_path, dpi=150)
+print(f"
+Visualization saved to: {output_path}")
 
 print("\n" + "=" * 60)
 print("KEY CONCEPTS")

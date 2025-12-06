@@ -6,6 +6,7 @@ Visualization is crucial for understanding data and model performance.
 
 import matplotlib.pyplot as plt
 import numpy as np
+from pathlib import Path
 
 print("Generating various plots for Machine Learning visualization...")
 print("=" * 60)
@@ -99,8 +100,9 @@ for i in range(5):
                        ha="center", va="center", color="black", fontsize=8)
 
 plt.tight_layout()
-plt.savefig('/home/user/machine-learning/01-foundations/visualization_examples.png', dpi=150, bbox_inches='tight')
-print("Saved visualization examples to: 01-foundations/visualization_examples.png")
+output_path = Path(__file__).parent / 'visualization_examples.png'
+plt.savefig(output_path, dpi=150, bbox_inches='tight')
+print(f"Saved visualization examples to: {output_path}")
 
 # Create a second figure for learning curves (important for ML!)
 fig2, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
@@ -131,8 +133,9 @@ ax2.legend()
 ax2.grid(True)
 
 plt.tight_layout()
-plt.savefig('/home/user/machine-learning/01-foundations/learning_curves.png', dpi=150, bbox_inches='tight')
-print("Saved learning curves to: 01-foundations/learning_curves.png")
+output_path = Path(__file__).parent / 'learning_curves.png'
+plt.savefig(output_path, dpi=150, bbox_inches='tight')
+print(f"Saved learning curves to: {output_path}")
 
 print("\n" + "=" * 60)
 print("COMMON PLOT TYPES IN MACHINE LEARNING:")

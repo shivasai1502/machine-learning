@@ -14,6 +14,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split, learning_curve
 from sklearn.metrics import accuracy_score, classification_report, roc_curve, auc
 from sklearn.datasets import make_classification
+from pathlib import Path
 
 print("=" * 60)
 print("GRADIENT BOOSTING - CUSTOMER CHURN PREDICTION")
@@ -252,8 +253,10 @@ ax6.legend()
 ax6.grid(True, alpha=0.3, axis='y')
 
 plt.tight_layout()
-plt.savefig('/home/user/machine-learning/03-intermediate/gradient_boosting_results.png', dpi=150)
-print("\nVisualization saved to: 03-intermediate/gradient_boosting_results.png")
+output_path = Path(__file__).parent / 'gradient_boosting_results.png'
+plt.savefig(output_path, dpi=150)
+print(f"
+Visualization saved to: {output_path}")
 
 print("\n" + "=" * 60)
 print("KEY CONCEPTS")

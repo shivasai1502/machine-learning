@@ -13,6 +13,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.datasets import make_classification
+from pathlib import Path
 
 print("=" * 60)
 print("LOGISTIC REGRESSION - EMAIL SPAM DETECTION")
@@ -132,8 +133,10 @@ plt.title('Decision Boundary')
 plt.grid(True, alpha=0.3)
 
 plt.tight_layout()
-plt.savefig('/home/user/machine-learning/02-beginner/logistic_regression_results.png', dpi=150)
-print("\nVisualization saved to: 02-beginner/logistic_regression_results.png")
+output_path = Path(__file__).parent / 'logistic_regression_results.png'
+plt.savefig(output_path, dpi=150)
+print(f"
+Visualization saved to: {output_path}")
 
 print("\n" + "=" * 60)
 print("KEY CONCEPTS")

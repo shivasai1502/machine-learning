@@ -206,13 +206,27 @@ machine-learning/
    ```
 
 3. **Install Dependencies**
+
+   **Option A: Core only (recommended for beginners)**
+   ```bash
+   pip install -r requirements-core.txt
+   ```
+
+   **Option B: Everything (includes deep learning and advanced libraries)**
    ```bash
    pip install -r requirements.txt
    ```
 
+   **Option C: Add advanced features later**
+   ```bash
+   pip install -r requirements-core.txt
+   # Later, when you reach 04-advanced:
+   pip install -r requirements-advanced.txt
+   ```
+
 4. **Verify Installation**
    ```bash
-   python -c "import numpy, pandas, sklearn, matplotlib; print('All packages installed!')"
+   python -c "import numpy, pandas, sklearn, matplotlib; print('Core packages installed!')"
    ```
 
 ### Option 2: Google Colab (No installation needed)
