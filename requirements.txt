@@ -1,0 +1,35 @@
+# Machine Learning Learning Path - Required Packages
+# Install with: pip install -r requirements.txt
+
+# Core Scientific Computing
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Machine Learning
+scikit-learn>=1.3.0
+
+# Deep Learning (Optional - for advanced section)
+tensorflow>=2.13.0  # or tensorflow-macos for Mac M1/M2
+# Alternative: pytorch>=2.0.0
+
+# Jupyter for interactive learning
+jupyter>=1.0.0
+ipython>=8.0.0
+
+# Additional useful packages
+pandas-profiling>=3.6.0  # Automated EDA
+xgboost>=2.0.0  # Gradient boosting
+lightgbm>=4.0.0  # Fast gradient boosting
+catboost>=1.2.0  # Categorical boosting
+
+# Model interpretation
+shap>=0.42.0  # Explain predictions
+
+# Utilities
+tqdm>=4.65.0  # Progress bars
+joblib>=1.3.0  # Model persistence
