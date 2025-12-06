@@ -14,5 +14,5 @@ catboost>=1.2.0  # Categorical boosting
 # Model Interpretation
 shap>=0.42.0  # Explain predictions
 
-# Data profiling
-pandas-profiling>=3.6.0  # Automated EDA
+# Data profiling (pandas-profiling was renamed to ydata-profiling)
+ydata-profiling>=4.0.0  # Automated EDA (formerly pandas-profiling)
