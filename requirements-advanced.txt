@@ -1,0 +1,18 @@
+# Advanced ML Libraries - Optional
+# Install with: pip install -r requirements-advanced.txt
+# Or install core first: pip install -r requirements-core.txt
+
+# Deep Learning (for 04-advanced section)
+tensorflow>=2.13.0  # or tensorflow-macos for Mac M1/M2
+# Alternative: pytorch>=2.0.0
+
+# Gradient Boosting Variants
+xgboost>=2.0.0  # Optimized gradient boosting
+lightgbm>=4.0.0  # Fast gradient boosting
+catboost>=1.2.0  # Categorical boosting
+
+# Model Interpretation
+shap>=0.42.0  # Explain predictions
+
+# Data profiling
+pandas-profiling>=3.6.0  # Automated EDA

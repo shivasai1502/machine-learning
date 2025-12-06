@@ -1,0 +1,16 @@
+# Machine Learning Learning Path - All Packages
+#
+# For a minimal install (recommended for beginners):
+#   pip install -r requirements-core.txt
+#
+# For advanced features (deep learning, gradient boosting variants):
+#   pip install -r requirements-advanced.txt
+#
+# Or install everything at once:
+#   pip install -r requirements.txt
+
+# Core packages (always needed)
+-r requirements-core.txt
+
+# Advanced packages (optional - for 04-advanced and experimentation)
+-r requirements-advanced.txt
